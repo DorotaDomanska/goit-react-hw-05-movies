@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[266],{266:function(i,e,t){t.r(e);var a=t(184);e.default=function(){return(0,a.jsxs)("main",{children:[(0,a.jsx)("h1",{children:"Trending today"}),(0,a.jsx)("p",{children:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, laboriosam placeat incidunt rem illum animi nemo quibusdam quia voluptatum voluptate."})]})}}}]);
-//# sourceMappingURL=266.2497544d.chunk.js.map
