@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
 // import { BackLink } from '../components/BackLink';
 
@@ -21,8 +22,8 @@ const MovieDetails = () => {
     fetchMovieById().catch(console.error);
   }, [movieId]);
 
-  console.log(movieFetched);
   const score = Math.ceil(movieFetched.vote_average * 10);
+  // const genres = movieFetched.genres.map(genre => genre.name).join(' ');
 
   return (
     <main>
@@ -34,9 +35,21 @@ const MovieDetails = () => {
         <h4>Overview</h4>
         <p>{movieFetched.overview}</p>
         <h5>Genres</h5>
-        {movieFetched.genres.map(genre => (
-          <p>{genre.name}</p>
-        ))}
+        {/* <p>{genres}</p> */}
+      </div>
+      <div>
+        <p>Additional information</p>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </main>
   );
