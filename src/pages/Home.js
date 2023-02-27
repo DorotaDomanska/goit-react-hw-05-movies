@@ -6,7 +6,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchUrl = 'https://api.themoviedb.org/3/';
-    const trending = 'trending/movie/day';
+    const trending = 'trending/movie/week';
     const apiKey = '93dad7f5c3f08e509beef896c33679a7';
 
     const fetchTrending = async () => {

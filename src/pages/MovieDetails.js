@@ -28,7 +28,10 @@ const MovieDetails = () => {
   return (
     <main>
       {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
-      <img src="https://via.placeholder.com/960x240" alt="" />
+      <img
+        src={`https://image.tmdb.org/t/p/w342/${movieFetched.poster_path}`}
+        alt=""
+      />
       <div>
         <h2>{movieFetched.original_title}</h2>
         <p>User score: {score}%</p>
