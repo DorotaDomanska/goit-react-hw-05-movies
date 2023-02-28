@@ -13,6 +13,7 @@ const MovieDetails = () => {
   //   const location = useLocation();
   //   const backLinkHref = location.state?.from ?? '/';
   const [movieFetched, setMovieFetched] = useState({});
+  const [genres, setGenres] = useState('');
 
   useEffect(() => {
     const fetchUrl = 'https://api.themoviedb.org/3/';
@@ -23,12 +24,15 @@ const MovieDetails = () => {
       const movieFromApi = await data.json();
 
       setMovieFetched(movieFromApi);
+      const movieGenres = movieFromApi.genres
+        .map(genre => genre.name)
+        .join(' ');
+      setGenres(movieGenres);
     };
     fetchMovieById().catch(console.error);
   }, [movieId]);
 
   const score = Math.ceil(movieFetched.vote_average * 10);
-  // const genres = movieFetched.genres.map(genre => genre.name).join(' ');
 
   return (
     <main>
@@ -44,7 +48,7 @@ const MovieDetails = () => {
           <h4>Overview</h4>
           <p>{movieFetched.overview}</p>
           <h5>Genres</h5>
-          {/* <p>{genres}</p> */}
+          <p>{genres}</p>
         </MovieInfo>
       </MovieCard>
       <AdditionalInfo>
