@@ -21,7 +21,6 @@ const Reviews = () => {
     fetchReviews().catch(console.error);
   }, [movieId]);
 
-
   return (
     <section>
       <ul>
@@ -31,6 +30,9 @@ const Reviews = () => {
             <p>{review.content}</p>
           </li>
         ))}
+        {reviews.length === 0 && (
+          <p>We don't have any reviews for this movie.</p>
+        )}
       </ul>
     </section>
   );
