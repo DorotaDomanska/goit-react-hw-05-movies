@@ -1,29 +1,33 @@
 import { MovieList } from 'components/MovieList';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  const [title, setTitle] = useState('');
   const [movies, setMovies] = useState([]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const title = searchParams.get('query') ?? '';
 
   const fetchUrl = 'https://api.themoviedb.org/3/search/movie';
   const apiKey = '93dad7f5c3f08e509beef896c33679a7';
 
   const handleFetchMovies = async () => {
-    const data = await fetch(`${fetchUrl}?api_key=${apiKey}&query=${title}`);
+    const data = await fetch(`${fetchUrl}?api_key=${apiKey}&${searchParams}`);
     const moviesFromApi = await data.json();
     setMovies(moviesFromApi.results);
   };
 
   const updateQueryString = evt => {
-    const searchQueryString = evt.target.value;
-    setTitle(searchQueryString);
+    const query = evt.target.value;
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParams(nextParams);
   };
 
   return (
     <main>
-      <input type="text" onChange={updateQueryString}></input>
+      <input type="text" value={title} onChange={updateQueryString}></input>
       <button onClick={handleFetchMovies}>Search</button>
-      <MovieList onSearch={handleFetchMovies} movies={movies} />
+      <MovieList movies={movies} />
     </main>
   );
 };
