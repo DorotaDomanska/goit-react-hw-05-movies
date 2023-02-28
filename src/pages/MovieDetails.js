@@ -1,6 +1,11 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
+import {
+  MovieCard,
+  MovieInfo,
+  AdditionalInfo,
+} from '../components/MovieDetails.styled';
 // import { BackLink } from '../components/BackLink';
 
 const MovieDetails = () => {
@@ -27,20 +32,22 @@ const MovieDetails = () => {
 
   return (
     <main>
-      {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
-      <img
-        src={`https://image.tmdb.org/t/p/w342/${movieFetched.poster_path}`}
-        alt=""
-      />
-      <div>
-        <h2>{movieFetched.original_title}</h2>
-        <p>User score: {score}%</p>
-        <h4>Overview</h4>
-        <p>{movieFetched.overview}</p>
-        <h5>Genres</h5>
-        {/* <p>{genres}</p> */}
-      </div>
-      <div>
+      <MovieCard>
+        {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
+        <img
+          src={`https://image.tmdb.org/t/p/w342/${movieFetched.poster_path}`}
+          alt=""
+        />
+        <MovieInfo>
+          <h2>{movieFetched.original_title}</h2>
+          <p>User score: {score}%</p>
+          <h4>Overview</h4>
+          <p>{movieFetched.overview}</p>
+          <h5>Genres</h5>
+          {/* <p>{genres}</p> */}
+        </MovieInfo>
+      </MovieCard>
+      <AdditionalInfo>
         <p>Additional information</p>
         <ul>
           <li>
@@ -50,10 +57,10 @@ const MovieDetails = () => {
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-        <Suspense fallback={<div>Loading subpage...</div>}>
-          <Outlet />
-        </Suspense>
-      </div>
+      </AdditionalInfo>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
