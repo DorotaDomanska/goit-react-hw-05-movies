@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MoviesTrendingList } from '../components/MoviesTrendingList';
+import PropTypes from 'prop-types';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -28,3 +29,7 @@ const Home = () => {
 };
 
 export default Home;
+
+MoviesTrendingList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};

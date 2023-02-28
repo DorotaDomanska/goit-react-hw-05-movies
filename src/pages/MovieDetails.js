@@ -40,7 +40,7 @@ const MovieDetails = () => {
       <MovieCard>
         <img
           src={`https://image.tmdb.org/t/p/w342/${movieFetched.poster_path}`}
-          alt=""
+          alt={`${movieFetched.original_title} movie poster`}
         />
         <MovieInfo>
           <h2>{movieFetched.original_title}</h2>

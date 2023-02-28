@@ -28,7 +28,7 @@ const Cast = () => {
           <li key={actor.id}>
             <img
               src={`https://image.tmdb.org/t/p/w45/${actor.profile_path}`}
-              alt=""
+              alt={`${actor.name}`}
             ></img>
             <p>{actor.name}</p>
             <p>Character: {actor.character}</p>

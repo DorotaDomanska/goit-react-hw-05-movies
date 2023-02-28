@@ -1,6 +1,7 @@
 import { MovieList } from 'components/MovieList';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -33,3 +34,7 @@ const Movies = () => {
 };
 
 export default Movies;
+
+MovieList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
