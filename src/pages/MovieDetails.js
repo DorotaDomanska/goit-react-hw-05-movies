@@ -7,6 +7,7 @@ import {
   AdditionalInfo,
 } from '../components/MovieDetails.styled';
 import { BackLink } from '../components/BackLink';
+import { fetchUrl, apiKey } from '../api/fetchKey';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -16,9 +17,6 @@ const MovieDetails = () => {
   const [genres, setGenres] = useState('');
 
   useEffect(() => {
-    const fetchUrl = 'https://api.themoviedb.org/3/';
-    const apiKey = '93dad7f5c3f08e509beef896c33679a7';
-
     const fetchMovieById = async () => {
       const data = await fetch(`${fetchUrl}movie/${movieId}?api_key=${apiKey}`);
       const movieFromApi = await data.json();

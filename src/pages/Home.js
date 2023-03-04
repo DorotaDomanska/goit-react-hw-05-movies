@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { MoviesTrendingList } from '../components/MoviesTrendingList';
+import { fetchUrl, apiKey } from '../api/fetchKey';
 import PropTypes from 'prop-types';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    const fetchUrl = 'https://api.themoviedb.org/3/';
     const trending = 'trending/movie/day';
-    const apiKey = '93dad7f5c3f08e509beef896c33679a7';
 
     const fetchTrending = async () => {
       const res = await fetch(`${fetchUrl}${trending}?api_key=${apiKey}`);
